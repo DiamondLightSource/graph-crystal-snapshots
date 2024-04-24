@@ -36,7 +36,7 @@ spec:
             - --s3-force-path-style
           envFrom:
           - configMapRef:
-              name: s3-config
+              name: crystal-snapshots-s3-config
           env:
             - name: DATABASE_PASSWORD
               valueFrom:
@@ -52,7 +52,7 @@ spec:
             - name: S3_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: s3-secret
+                  name: crystal-snapshots-s3-secret
                   key: access-key
           ports:
             - name: http
