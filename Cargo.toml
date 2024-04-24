@@ -1,6 +1,6 @@
 [workspace]
-default-members = ["crystal_snapshots"]
-members = [ "crystal_snapshots"]
+default-members = ["crystal_snapshots", "models"]
+members = [ "crystal_snapshots", "models"]
 resolver = "2"
 
 [workspace.dependencies]
