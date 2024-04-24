@@ -134,8 +134,4 @@ impl Query {
     async fn router_data_collection(&self, id: u32) -> DataCollection {
         DataCollection { id }
     }
-
-    async fn test(&self, id: u32) -> DataCollection {
-        DataCollection { id }
-    }
 }

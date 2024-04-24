@@ -39,13 +39,13 @@ jobs:
           command: run
           args: >
             schema
-            --path processed_data.graphql
+            --path crystal-snapshots.graphql
 
       - name: Upload Schema Artifact
         uses: actions/upload-artifact@v4.3.1
         with:
-          name: processed_data.graphql
-          path: processed_data.graphql
+          name: crystal-snapshots.graphql
+          path: crystal-snapshots.graphql
 
   publish:
       # Deduplicate jobs from pull requests and branch pushes within the same repo.
