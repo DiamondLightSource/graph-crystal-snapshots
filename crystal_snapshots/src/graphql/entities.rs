@@ -4,6 +4,6 @@ use async_graphql::SimpleObject;
 #[derive(Debug, Clone, SimpleObject)]
 #[graphql(name = "DataCollection", unresolvable = "dataCollectionId", complex)]
 pub struct DataCollection {
-    // #[graphql(skip)]
+    /// An opaque unique identifier for data collection
     pub id: u32,
 }

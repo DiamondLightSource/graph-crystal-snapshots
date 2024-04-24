@@ -95,25 +95,20 @@ impl Loader<u32> for CrystalSnapshotDataLoader {
                 record.xtal_snapshot_full_path4,
             ];
 
-            for snap in snaps.into_iter() {
-                match snap {
-                    Some(snap) => {
-                        let object_uri = self
-                            .s3_client
-                            .get_object()
-                            .bucket(self.s3_bucket.clone())
-                            .key(snap)
-                            .presigned(PresigningConfig::expires_in(Duration::from_secs(10 * 60))?)
-                            .await?
-                            .uri()
-                            .clone();
-                        results
-                            .entry(id)
-                            .or_insert(Vec::new())
-                            .push(object_uri.to_string());
-                    }
-                    None => (),
-                }
+            for snap in snaps.into_iter().flatten() {
+                let object_uri = self
+                    .s3_client
+                    .get_object()
+                    .bucket(self.s3_bucket.clone())
+                    .key(snap)
+                    .presigned(PresigningConfig::expires_in(Duration::from_secs(10 * 60))?)
+                    .await?
+                    .uri()
+                    .clone();
+                results
+                    .entry(id)
+                    .or_insert(Vec::new())
+                    .push(object_uri.to_string());
             }
         }
         Ok(results)
