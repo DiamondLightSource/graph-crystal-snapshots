@@ -1,0 +1,11 @@
+apiVersion: v2
+name: crystal_snapshot
+description: A deployment providing processed data collected during beamline session as part of the graph federation
+type: application
+
+version: 0.1.0
+
+dependencies:
+  - name: crystal-snapshots
+    version: 0.1.0
+    condition: crystal-snapshots.enabled
